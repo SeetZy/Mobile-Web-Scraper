@@ -2,13 +2,18 @@
   * Util/Dependency imports
  */
 import 'package:flutter/material.dart';
+import 'package:app/db/db.dart';
 
 /*
   * Page/Component imports
  */
 import 'package:app/components/baseplate.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // Initializes the database
+  Database.connectDb();
+
   runApp(const App());
 }
 

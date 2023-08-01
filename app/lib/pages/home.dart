@@ -8,6 +8,34 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    final TextEditingController topicController = TextEditingController();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          "Use the web scraper to search a desired topic",
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(25.0),
+          child: TextField(
+            controller: topicController,
+            decoration: const InputDecoration(
+              prefixIcon: Icon(
+                Icons.search,
+              ),
+              hintText: "Topic to search",
+              border: OutlineInputBorder(),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }

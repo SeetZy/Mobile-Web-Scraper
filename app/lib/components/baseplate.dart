@@ -4,12 +4,7 @@
 import 'package:flutter/material.dart';
 // ? https://pub.dev/packages/curved_navigation_bar
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-
-/*
-  * Page/Component imports
- */
-import 'package:app/pages/home.dart';
-import 'package:app/pages/saved.items.dart';
+import 'package:app/utils/nav.utils.dart';
 
 class Baseplate extends StatefulWidget {
   const Baseplate({super.key});
@@ -18,40 +13,19 @@ class Baseplate extends StatefulWidget {
 }
 
 class _BaseplateState extends State<Baseplate> {
-  // Page navigation index
-  int index = 0;
-
-  // Pages that the navigation bar uses
-  final pages = [
-    const HomePage(),
-    const SavedItemsPage(),
-  ];
-
-  // Navigation bar buttons
-  final items = [
-    const Icon(
-      Icons.search,
-      color: Colors.white,
-    ),
-    const Icon(
-      Icons.save_rounded,
-      color: Colors.white,
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: pages[index]),
+      body: SafeArea(child: NavUtils.pages[NavUtils.index]),
       backgroundColor: Colors.white,
       bottomNavigationBar: CurvedNavigationBar(
         height: 55,
         backgroundColor: Colors.white,
         color: Colors.deepPurple,
-        index: index,
+        index: NavUtils.index,
         // Navigates to a specific page based on the index
-        onTap: (index) => setState(() => this.index = index),
-        items: items,
+        onTap: (index) => setState(() => NavUtils.index = index),
+        items: NavUtils.items,
       ),
     );
   }
